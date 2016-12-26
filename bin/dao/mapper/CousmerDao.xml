@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.mapper.CousmerDao">
+
+	<select id="getUser" resultType="dao.pojo.Cousmer">
+		select c.id as 'id',c.name as 'name',c.telphone as 'tel',ca.address as 'cadd',DATE_FORMAT(c.sign_time,'%Y-%m-%d') as 'stime',DATE_FORMAT(c.last_login_time,'%Y-%m-%d') as 'lltime' from consumer c,cus_address ca where ca.consumer_id = c.id and ca.static_add = 'Y'
+	</select>
+	
+	<delete id="delUser" parameterType="integer">
+		delete consumer where id=#{id}
+	</delete>
+</mapper>
